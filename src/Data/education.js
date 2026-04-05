@@ -8,10 +8,12 @@ const educationData = [
   {
     level: "Intermediate (MPC)",
     institute: "SR Junior College",
+     duration: "2019 - 2021",
     score: "Percentage: 79%",
   },
   {
     level: "SSC (10th Class)",
+     duration: "2019",
     institute: "Zilla Parishad High School",
     score: "GPA: 8.7",
   },
