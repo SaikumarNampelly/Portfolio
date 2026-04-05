@@ -46,7 +46,7 @@ const Projects = () => {
                 key={index}
                 variants={textVariants}
                 whileHover={{ scale: 1.04, y: -6 }}
-                className="group rounded-[28px] border border-slate-800 bg-slate-900/95 p-6 shadow-2xl shadow-black/25 transition-all duration-300 hover:border-cyan-500/40 hover:bg-slate-900"
+                className="group rounded-[28px] border border-slate-800 bg-slate-900/95 p-5 sm:p-6 shadow-2xl shadow-black/25 transition-all duration-300 hover:border-cyan-500/40 hover:bg-slate-900"
               >
                 <div className="flex items-center justify-between mb-5">
                   <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cyan-300">

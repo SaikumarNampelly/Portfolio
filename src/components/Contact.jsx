@@ -75,18 +75,17 @@ const Contact = () => {
         >
           {/* TITLE */}
           <motion.div variants={textVariants} className="text-center max-w-3xl mx-auto">
-            <SectionTitle title="Contact Me"/>
+            <SectionTitle title="Contact Me" />
             <p className="text-slate-400">
               Let’s build something amazing together. Reach out for projects or collaborations.
             </p>
           </motion.div>
 
           <div className="grid gap-6 md:gap-8 lg:grid-cols-[1.4fr_1fr]">
-            
-            {/* FORM */}
+
             <motion.div
               variants={textVariants}
-              className="rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-xl"
+              className="rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8 shadow-xl"
             >
               <h3 className="text-xl font-semibold text-cyan-300 mb-4">
                 Contact Me
@@ -144,7 +143,7 @@ const Contact = () => {
             {/* CONTACT INFO */}
             <motion.div
               variants={textVariants}
-              className="rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-xl space-y-6"
+              className="rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8 shadow-xl space-y-6"
             >
               <h3 className="text-xl font-semibold text-cyan-300">
                 Contact Info

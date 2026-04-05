@@ -92,7 +92,7 @@ const Skills = () => {
     <motion.div
       key={i}
       variants={textVariants}
-      className="space-y-5 p-6 rounded-2xl border border-white/10 
+      className="space-y-5 p-5 sm:p-6 rounded-2xl border border-white/10 
       bg-white/5 backdrop-blur-xl 
       shadow-lg shadow-black/20 
       hover:shadow-cyan-500/10 

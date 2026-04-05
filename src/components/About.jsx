@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 
+import SectionTitle from "./ui/SectionTitle";
+
 const lineVariants = {
   hidden: { height: 0 },
   visible: {
@@ -27,14 +29,13 @@ const About = () => {
       <div className="max-w-6xl mx-auto">
 
         {/* TITLE */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-3xl md:text-4xl font-extrabold text-center mb-8 md:mb-16 bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 bg-clip-text text-transparent"
+        <motion.div
+           initial={{ opacity: 0, y: 40 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.7 }}
         >
-          About Me
-        </motion.h2>
+          <SectionTitle title="About Me" />
+        </motion.div>
 
         {/* MAIN GRID */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">

@@ -47,8 +47,7 @@ const Hero = () => {
   }, []);
   return (
     <section id="hero" className="min-h-screen bg-slate-950 text-slate-100 my-0 pt-20">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 md:gap-10 md:px-6 lg:px-12 md:grid-cols-2">
-        <motion.div
+<div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:px-12 grid-cols-1 md:grid-cols-2 items-center">   <motion.div
           className="space-y-6 md:max-w-xl lg:max-w-2xl"
           variants={containerVariants}
           initial="hidden"
@@ -78,8 +77,7 @@ const Hero = () => {
               <span className="block text-slate-100 italic">
                 {heroData.name.split(" ").slice(0, 2).join(" ")}
               </span>
-              <span className="block bg-gradient-to-r from-cyan-400 italic via-sky-500 to-blue-500 bg-clip-text text-transparent md:ml-28">
-                {heroData.name.split(" ").slice(2).join(" ")}
+<span className="block bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 bg-clip-text text-transparent text-center md:text-left">                {heroData.name.split(" ").slice(2).join(" ")}
               </span>
             </motion.h1>
 
@@ -106,7 +104,7 @@ const Hero = () => {
             </p>
           </div>
 
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-center md:justify-start">
             {[
               {
                 icon: <FaLinkedin />,
@@ -143,7 +141,7 @@ const Hero = () => {
             ))}
           </motion.div>
 
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
             <motion.button
               whileHover={{ y: -3, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

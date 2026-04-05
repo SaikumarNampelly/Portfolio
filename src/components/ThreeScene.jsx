@@ -6,30 +6,41 @@ const Sphere = () => {
   const meshRef = useRef();
 
   useFrame(({ mouse }) => {
-    meshRef.current.rotation.y += 0.01;
+    meshRef.current.rotation.y += 0.005;
 
-    // mouse interaction
-    meshRef.current.rotation.x = mouse.y * 0.5;
-    meshRef.current.rotation.y = mouse.x * 0.5;
+    // smooth mouse interaction
+    meshRef.current.rotation.x = (mouse.y * 0.2);
+    meshRef.current.rotation.y += (mouse.x * 0.2);
   });
 
   return (
     <mesh ref={meshRef}>
-      <sphereGeometry args={[1.5, 32, 32]} />
-      <meshStandardMaterial color="#3b82f6" wireframe />
+      {/* Dynamic size based on window width for mobile responsiveness */}
+      <sphereGeometry args={[window.innerWidth < 768 ? 1.2 : 1.8, 32, 32]} />
+      <meshStandardMaterial 
+        color="#22d3ee" 
+        wireframe 
+        emissive="#0891b2"
+        emissiveIntensity={0.5}
+        transparent
+        opacity={0.6}
+      />
     </mesh>
   );
 };
 
 const ThreeScene = () => {
   return (
-    <Canvas>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[2, 2, 2]} />
+    <div className="w-full h-full min-h-[300px] md:min-h-[500px]">
+      <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} intensity={1.5} />
+        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#3b82f6" />
 
-      <Sphere />
-      <OrbitControls enableZoom={false} />
-    </Canvas>
+        <Sphere />
+        <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
+      </Canvas>
+    </div>
   );
 };
 

@@ -78,34 +78,39 @@ const Navbar = () => {
         </button>
 
         {/* Mobile Menu */}
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-slate-950/95 backdrop-blur-xl border-t border-slate-800 md:hidden"
-          >
-            <div className="flex flex-col py-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => {
-                    setActive(item.href);
-                    setMenuOpen(false);
-                  }}
-                  className={`px-6 py-3 text-sm font-medium transition-colors ${
-                    active === item.href
-                      ? "text-cyan-300 bg-cyan-500/10"
-                      : "text-slate-300 hover:text-cyan-200 hover:bg-slate-800/50"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
+        <motion.div
+          initial={false}
+          animate={menuOpen ? "open" : "closed"}
+          variants={{
+            open: { height: "auto", opacity: 1, display: "block" },
+            closed: { height: 0, opacity: 0, transitionEnd: { display: "none" } },
+          }}
+          transition={{ duration: 0.35, ease: "easeInOut" }}
+          className="absolute top-full left-0 right-0 overflow-hidden bg-slate-950/98 backdrop-blur-2xl border-t border-slate-800 md:hidden shadow-2xl rounded-b-2xl"
+        >
+          <div className="flex flex-col py-6 px-4 gap-2">
+            {navItems.map((item, index) => (
+              <motion.a
+                key={item.href}
+                href={item.href}
+                initial={{ x: -20, opacity: 0 }}
+                animate={menuOpen ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.3 }}
+                onClick={() => {
+                  setActive(item.href);
+                  setMenuOpen(false);
+                }}
+                className={`flex items-center px-6 py-4 text-base font-semibold rounded-2xl transition-all ${
+                  active === item.href
+                    ? "text-cyan-400 bg-cyan-400/10 shadow-sm shadow-cyan-400/5 border border-cyan-400/20"
+                    : "text-slate-300 hover:text-cyan-300 hover:bg-slate-900"
+                }`}
+              >
+                {item.label}
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </motion.nav>
   );
