@@ -1,0 +1,25 @@
+@import "tailwindcss";
+/* hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #020617; /* match your dark theme */
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+main {
+  overflow-x: hidden;
+}
+section {
+  scroll-margin-top: 5.5rem;
+}
