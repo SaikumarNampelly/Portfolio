@@ -186,18 +186,8 @@ const Hero = () => {
 >
   <div className="relative flex items-center justify-center">
 
-    {/* Animated Background Circle */}
     <motion.div
-      animate={{ scale: [1, 1.05, 1] }}
-      transition={{
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
-
-    <motion.div
-      className="p-2 ml-22 relative"
+      className="p-2 md:ml-22 relative"
       animate={{ y: [0, -8, 0] }}
       transition={{
         duration: 4,
