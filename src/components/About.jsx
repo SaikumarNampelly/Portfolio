@@ -25,14 +25,14 @@ const itemVariants = {
 
 const About = () => {
   return (
-    <section id="about" className="px-4 py-12 md:px-6 md:py-20 bg-slate-950 text-slate-100">
+    <section id="about" className="px-4  md:px-6 md:py-20 bg-white text-slate-900">
       <div className="max-w-6xl mx-auto">
 
         {/* TITLE */}
         <motion.div
-           initial={{ opacity: 0, y: 40 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.7 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.7 }}
         >
           <SectionTitle title="About Me" />
         </motion.div>
@@ -52,7 +52,7 @@ const About = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
               }}
-              className="inline-block px-4 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-sm font-medium border border-cyan-500/20"
+              className="inline-block px-4 py-1 rounded-full bg-[#EEF2FF] text-[#4F46E5] text-sm font-medium border border-[#E5E7EB]"
             >
               MERN Stack Developer
             </motion.div>
@@ -63,12 +63,9 @@ const About = () => {
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
               }}
-              className="text-3xl font-bold leading-snug"
+              className="text-3xl font-bold leading-snug text-slate-900"
             >
-              I build{" "}
-              <span className="text-cyan-400">scalable</span> &{" "}
-              <span className="text-sky-400">high-performance</span>{" "}
-              web applications
+              I build <span className="text-[#4F46E5]">scalable</span> & <span className="text-[#4F46E5]">high-performance</span> web applications
             </motion.h3>
 
             {/* DESCRIPTION */}
@@ -77,13 +74,12 @@ const About = () => {
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.2 } },
               }}
-              className="text-slate-400 leading-relaxed"
+              className="text-slate-600 leading-relaxed"
             >
-              I specialize in crafting clean, responsive frontends with React and building
-              secure backend systems using Node.js, Express, and MongoDB.
+              I specialize in developing responsive user interfaces with React and building secure backend systems using Node.js, Express, and MongoDB.
             </motion.p>
 
-            {/* HIGHLIGHTS (BETTER THAN PARAGRAPH) */}
+            {/* HIGHLIGHTS */}
             <motion.div
               variants={{
                 hidden: { opacity: 0, y: 30 },
@@ -96,116 +92,84 @@ const About = () => {
               className="space-y-3"
             >
               <div className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-cyan-400"></span>
-                <p className="text-slate-400 text-sm">
-                  Clean UI & responsive design focus
+                <span className="mt-1 h-2 w-2 rounded-full bg-[#4F46E5]"></span>
+                <p className="text-slate-600 text-sm">
+                  Clean and responsive UI design
                 </p>
               </div>
 
               <div className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-sky-400"></span>
-                <p className="text-slate-400 text-sm">
-                  Secure APIs with JWT & role-based access
+                <span className="mt-1 h-2 w-2 rounded-full bg-[#4F46E5]"></span>
+                <p className="text-slate-600 text-sm">
+                  Secure APIs with JWT-based authentication
                 </p>
               </div>
 
               <div className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 rounded-full bg-blue-400"></span>
-                <p className="text-slate-400 text-sm">
-                  Performance & scalable architecture mindset
-                </p>
+                <span className="mt-1 h-2 w-2 rounded-full bg-[#4F46E5]"></span>
+                <p className="text-slate-600 text-sm">
+                  Focus on performance and scalable architecture                </p>
               </div>
             </motion.div>
           </motion.div>
 
           {/* RIGHT SIDE (TIMELINE STYLE) */}
           <motion.div
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, margin: "-100px" }}
-  className="relative pl-10"
->
-  {/* Gradient Vertical Line */}
-  <motion.div
-    variants={lineVariants}
-    className="absolute left-[10px] top-0 w-[2px] bg-gradient-to-b from-cyan-400 via-sky-500 to-blue-500"
-  />
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="relative pl-10"
+          >
+            {/* Gradient Vertical Line */}
+            <motion.div
+              variants={lineVariants}
+              className="absolute left-[10px] top-0 w-[2px] bg-slate-200"
+            />
 
-  <div className="space-y-12">
-    {/* ITEM */}
-    <motion.div
-      custom={0}
-      variants={itemVariants}
-      className="relative flex items-start gap-5 group"
-    >
-      {/* BULLET NODE */}
-      <div className="relative flex items-center justify-center">
-        {/* outer ring */}
-        <div className="h-5 w-5 rounded-full border border-cyan-400/40"></div>
+            <div className="space-y-12">
+              {/* ITEM 1 */}
+              <motion.div custom={0} variants={itemVariants} className="relative flex items-start gap-5 group">
+                <div className="relative flex items-center justify-center">
+                  <div className="h-5 w-5 rounded-full border border-slate-300 bg-white"></div>
+                  <div className="absolute h-2.5 w-2.5 rounded-full bg-[#4F46E5] transition-transform duration-300 group-hover:scale-125"></div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-slate-800">MERN Expertise</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    Building full-stack applications using MongoDB, Express, React, and Node.js with clean architecture and scalable design.
+                  </p>
+                </div>
+              </motion.div>
 
-        {/* inner dot */}
-        <div className="absolute h-2.5 w-2.5 rounded-full bg-cyan-400 transition-transform duration-300 group-hover:scale-125"></div>
+              {/* ITEM 2 */}
+              <motion.div custom={1} variants={itemVariants} className="relative flex items-start gap-5 group">
+                <div className="relative flex items-center justify-center">
+                  <div className="h-5 w-5 rounded-full border border-slate-300 bg-white"></div>
+                  <div className="absolute h-2.5 w-2.5 rounded-full bg-[#4F46E5] transition-transform duration-300 group-hover:scale-125"></div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-slate-800">Backend Systems</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    Designing RESTful APIs with authentication and scalable backend architecture.
+                  </p>
+                </div>
+              </motion.div>
 
-        {/* glow */}
-        <div className="absolute h-5 w-5 rounded-full bg-cyan-400/20 blur-md opacity-50"></div>
-      </div>
-
-      {/* CONTENT */}
-      <div>
-        <h3 className="text-lg font-semibold text-cyan-300">
-          MERN Expertise
-        </h3>
-        <p className="text-slate-400 text-sm leading-relaxed">
-          Building full-stack applications using MongoDB, Express, React, and Node.js.
-        </p>
-      </div>
-    </motion.div>
-
-    {/* ITEM */}
-    <motion.div
-      custom={1}
-      variants={itemVariants}
-      className="relative flex items-start gap-5 group"
-    >
-      <div className="relative flex items-center justify-center">
-        <div className="h-5 w-5 rounded-full border border-sky-400/40"></div>
-        <div className="absolute h-2.5 w-2.5 rounded-full bg-sky-400 transition-transform duration-300 group-hover:scale-125"></div>
-        <div className="absolute h-5 w-5 rounded-full bg-sky-400/20 blur-md opacity-50"></div>
-      </div>
-
-      <div>
-        <h3 className="text-lg font-semibold text-sky-300">
-          Backend Systems
-        </h3>
-        <p className="text-slate-400 text-sm leading-relaxed">
-          Designing secure APIs with JWT authentication and scalable architecture.
-        </p>
-      </div>
-    </motion.div>
-
-    {/* ITEM */}
-    <motion.div
-      custom={2}
-      variants={itemVariants}
-      className="relative flex items-start gap-5 group"
-    >
-      <div className="relative flex items-center justify-center">
-        <div className="h-5 w-5 rounded-full border border-blue-400/40"></div>
-        <div className="absolute h-2.5 w-2.5 rounded-full bg-blue-400 transition-transform duration-300 group-hover:scale-125"></div>
-        <div className="absolute h-5 w-5 rounded-full bg-blue-400/20 blur-md opacity-50"></div>
-      </div>
-
-      <div>
-        <h3 className="text-lg font-semibold text-blue-300">
-          Real Projects
-        </h3>
-        <p className="text-slate-400 text-sm leading-relaxed">
-          Built marketplace platforms, booking systems, and interactive dashboards.
-        </p>
-      </div>
-    </motion.div>
-  </div>
-</motion.div>
+              {/* ITEM 3 */}
+              <motion.div custom={2} variants={itemVariants} className="relative flex items-start gap-5 group">
+                <div className="relative flex items-center justify-center">
+                  <div className="h-5 w-5 rounded-full border border-slate-300 bg-white"></div>
+                  <div className="absolute h-2.5 w-2.5 rounded-full bg-[#4F46E5] transition-transform duration-300 group-hover:scale-125"></div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-slate-800">Real Projects</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    Built user-focused platforms including booking systems and interactive dashboards.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -24,7 +24,7 @@ const textVariants = {
 
 const Projects = () => {
   return (
-    <section id="projects" className="px-4 py-12 md:px-6 md:py-20 bg-slate-950 text-slate-100">
+    <section id="projects" className="px-4 py-20 bg-white">
       <Container>
         <motion.div
           variants={containerVariants}
@@ -35,30 +35,41 @@ const Projects = () => {
         >
           <motion.div variants={textVariants} className="space-y-4 text-center max-w-3xl mx-auto">
             <SectionTitle title="Projects" />
-            <p className="text-slate-400">
+            <p className="text-slate-600">
               Recent work focused on scalable frontends, secure backend architecture, and polished user experiences. Each project reflects a production-ready approach with responsive design.
             </p>
           </motion.div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-7 md:grid-cols-8 lg:grid-cols-2">
             {projectsData.map((project, index) => (
               <motion.div
                 key={index}
                 variants={textVariants}
-                whileHover={{ scale: 1.04, y: -6 }}
-                className="group rounded-[28px] border border-slate-800 bg-slate-900/95 p-5 sm:p-6 shadow-2xl shadow-black/25 transition-all duration-300 hover:border-cyan-500/40 hover:bg-slate-900"
+                whileHover={{ y: -8 }}
+                className="group overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white shadow-sm transition-all duration-300 hover:border-[#4F46E5] hover:shadow-md p-6"
               >
-                <div className="flex items-center justify-between mb-5">
-                  <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cyan-300">
-                    Featured
-                  </span>
-                  <span className="text-sm text-slate-500">{project.tech.length} tech</span>
+                <div className="relative mb-6 overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
+
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="aspect-video w-full object-cover object-top transition duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent pointer-events-none" />
                 </div>
 
-                <h3 className="text-2xl font-semibold text-slate-100 mb-4">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="rounded-full bg-[#EEF2FF] border border-[#E5E7EB] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#4F46E5]">
+                    Featured
+                  </span>
+                  <span className="text-xs font-medium text-slate-400">{project.tech.length} Technologies</span>
+                </div>
+
+
+                <h3 className="mb-3 text-2xl font-bold text-slate-900">
                   {project.title}
                 </h3>
-                <p className="text-slate-400 leading-relaxed mb-6">
+                <p className="mb-6 text-sm leading-relaxed text-slate-600 line-clamp-2">
                   {project.description}
                 </p>
 
@@ -66,7 +77,7 @@ const Projects = () => {
                   {project.tech.map((t, i) => (
                     <span
                       key={i}
-                      className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-xs font-medium text-sky-300"
+                      className="rounded-md border border-[#E5E7EB] bg-[#F8FAFC] px-2.5 py-1 text-[11px] font-semibold text-slate-600 transition-colors group-hover:border-indigo-100 group-hover:bg-indigo-50/50"
                     >
                       {t}
                     </span>
@@ -78,7 +89,7 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-950 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-cyan-400 hover:text-cyan-300"
+                    className="flex-1 inline-flex items-center justify-center rounded-xl border border-[#E5E7EB] bg-white px-4 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-[#F8FAFC] hover:text-[#4F46E5] hover:border-[#4F46E5]"
                   >
                     Code
                   </a>
@@ -86,9 +97,9 @@ const Projects = () => {
                     href={project.live}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center rounded-full bg-cyan-500/10 px-4 py-2 text-sm font-semibold text-cyan-300 transition hover:bg-cyan-500/15"
+                    className="flex-1 inline-flex items-center justify-center rounded-xl bg-[#4F46E5] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#4338CA] hover:shadow-md"
                   >
-                    Live
+                    Live Demo
                   </a>
                 </div>
               </motion.div>

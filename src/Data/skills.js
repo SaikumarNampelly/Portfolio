@@ -3,6 +3,6 @@
   backend: ["Node.js", "Express.js"],
   languages: ["JavaScript (ES6+)", "Java"],
   database: ["MongoDB", "MySQL"],
-  tools: ["Git", "GitHub", "VS Code", "Vercel"],
+  tools: ["Git", "GitHub", "Postman","VS Code", "Vercel"],
 };
 export default skillsData;

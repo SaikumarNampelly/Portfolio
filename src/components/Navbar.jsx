@@ -29,40 +29,40 @@ const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-xl rounded-b-3xl ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-md ${
         scrolled
-          ? "bg-slate-950/95 shadow-xl shadow-black/20 border-b border-slate-800"
-          : "bg-slate-950/80"
+          ? "bg-white/90 border-b border-[#E5E7EB] shadow-sm"
+          : "bg-transparent"
       }`}
+
     >
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center ">
         <motion.h1
-          whileHover={{ scale: 1.08 }}
-          className="font-extrabold text-lg md:text-xl cursor-pointer"
+          whileHover={{ scale: 1.05 }}
+          className="font-black text-xl cursor-pointer tracking-tight"
         >
-          <span className="text-white">Sai Kumar</span>{" "}
-          <span className="text-cyan-400">Nampelly</span>
+          <span className="text-slate-900">Sai Kumar</span>{" "}
+          <span className="text-[#4F46E5]">Nampelly</span>
         </motion.h1>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navItems.map((item) => (
             <motion.a
               key={item.href}
               href={item.href}
               onClick={() => setActive(item.href)}
-              whileHover={{ y: -2 }}
-              className={`relative text-base font-medium transition-colors ${
+              className={`relative text-sm font-bold tracking-wide transition-colors ${
                 active === item.href
-                  ? "text-cyan-300"
-                  : "text-slate-300 hover:text-cyan-200"
+                  ? "text-[#4F46E5]"
+                  : "text-slate-600 hover:text-[#4F46E5]"
               }`}
             >
               {item.label}
               {active === item.href && (
                 <motion.span
                   layoutId="underline"
-                  className="absolute left-0 -bottom-1 w-full h-[2px] bg-cyan-300 rounded"
+                  className="absolute left-0 -bottom-1 w-full h-[2px] bg-[#4F46E5] rounded-full"
                 />
               )}
             </motion.a>
@@ -72,7 +72,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-slate-300 hover:text-cyan-300 transition-colors"
+          className="md:hidden text-slate-500 hover:text-[#4F46E5] transition-colors"
         >
           {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
@@ -85,8 +85,8 @@ const Navbar = () => {
             open: { height: "auto", opacity: 1, display: "block" },
             closed: { height: 0, opacity: 0, transitionEnd: { display: "none" } },
           }}
-          transition={{ duration: 0.35, ease: "easeInOut" }}
-          className="absolute top-full left-0 right-0 overflow-hidden bg-slate-950/98 backdrop-blur-2xl border-t border-slate-800 md:hidden shadow-2xl rounded-b-2xl"
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="absolute top-full left-0 right-0 overflow-hidden bg-white/95 backdrop-blur-lg border-t border-[#E5E7EB] md:hidden shadow-xl"
         >
           <div className="flex flex-col py-6 px-4 gap-2">
             {navItems.map((item, index) => (
@@ -102,8 +102,8 @@ const Navbar = () => {
                 }}
                 className={`flex items-center px-6 py-4 text-base font-semibold rounded-2xl transition-all ${
                   active === item.href
-                    ? "text-cyan-400 bg-cyan-400/10 shadow-sm shadow-cyan-400/5 border border-cyan-400/20"
-                    : "text-slate-300 hover:text-cyan-300 hover:bg-slate-900"
+                    ? "text-[#4F46E5] bg-indigo-50 border border-indigo-100"
+                    : "text-slate-700 hover:text-[#4F46E5] hover:bg-slate-50"
                 }`}
               >
                 {item.label}

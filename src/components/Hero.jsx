@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import heroData from "../Data/hero";
 import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa";
-import profilePic from "../assets/profile.png";
+import profilePic from "../assets/profile.jpeg";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -22,167 +22,201 @@ const fadeUp = {
 
 const Hero = () => {
   const [typedRole, setTypedRole] = useState("");
+  const [roleIndex, setRoleIndex] = useState(0);
   const [isGradient, setIsGradient] = useState(false);
 
   useEffect(() => {
-    const fullRole = heroData.role;
+    const roles = heroData.roles;
+    const currentText = roles[roleIndex];
     let currentIndex = 0;
+    let isDeleting = false;
+    let timeoutId;
 
-    const interval = setInterval(() => {
-      currentIndex++;
-      setTypedRole(fullRole.slice(0, currentIndex));
-
-      if (currentIndex === fullRole.length) {
-        setTimeout(() => {
-          currentIndex = 0;
-          setTypedRole("");
-
-          // 🔥 toggle color every loop
-          setIsGradient((prev) => !prev);
-        }, 700);
+    const type = () => {
+      if (isDeleting) {
+        setTypedRole(currentText.substring(0, currentIndex - 1));
+        currentIndex--;
+      } else {
+        setTypedRole(currentText.substring(0, currentIndex + 1));
+        currentIndex++;
       }
-    }, 80);
 
-    return () => clearInterval(interval);
-  }, []);
+      let typeSpeed = isDeleting ? 50 : 100;
+
+      if (!isDeleting && currentIndex === currentText.length) {
+        typeSpeed = 2000; // Pause at complete word
+        isDeleting = true;
+      } else if (isDeleting && currentIndex === 0) {
+        isDeleting = false;
+        setRoleIndex((prev) => (prev + 1) % roles.length);
+        setIsGradient((prev) => !prev);
+        typeSpeed = 500;
+      }
+
+      timeoutId = setTimeout(type, typeSpeed);
+    };
+
+    type();
+
+    return () => clearTimeout(timeoutId);
+  }, [roleIndex]);
+
   return (
-    <section id="hero" className="min-h-screen bg-slate-950 text-slate-100 my-0 pt-20">
-<div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:px-12 grid-cols-1 md:grid-cols-2 items-center">   <motion.div
-          className="space-y-6 md:max-w-xl lg:max-w-2xl"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+    <section id="hero" className="relative min-h-screen w-full overflow-hidden bg-[#F1F5F9] px-4 md:px-6 flex items-center">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:px-12 grid-cols-1 md:grid-cols-2 items-center">   <motion.div
+        className="space-y-6 md:max-w-xl lg:max-w-2xl"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.p
+          variants={fadeUp}
+          className="inline-flex items-center rounded-full bg-[#EEF2FF] border border-[#E5E7EB] px-4 py-2 text-sm font-medium text-[#4F46E5]"
         >
+          MERN Stack Developer • Full Stack • Web Apps
+        </motion.p>
+
+        <div className="space-y-8">
+          {/* 🔥 REFINED GREETING */}
           <motion.p
             variants={fadeUp}
-            className="inline-flex items-center rounded-full bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 ring-1 ring-cyan-500/20"
+            className="text-slate-600 font-medium tracking-widest uppercase text-sm md:text-base text-center md:text-left"
           >
-            Full Stack Development • MERN • API-first
+            Hello👋, I'm
           </motion.p>
 
-          <div className="space-y-8">
-            {/* 🔥 REFINED GREETING */}
-            <motion.p
-              variants={fadeUp}
-              className="text-lg md:text-xl lg:text-2xl text-slate-200 font-semibold text-center md:text-left"
-            >
-              Hello👋, I'm{" "}
-            </motion.p>
+          {/* NAME */}
+          <motion.h1
+            variants={fadeUp}
+            className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-center md:text-left"
+          >
+            <span className="block text-slate-900 italic font-black">
+              {heroData.name.split(" ").slice(0, 2).join(" ")}
+            </span>
+            <span className="block text-[#4F46E5] text-center md:text-left italic font-black ml-25">
+              {heroData.name.split(" ").slice(2).join(" ")}
+            </span>
+          </motion.h1>
 
-            {/* NAME */}
-            <motion.h1
-              variants={fadeUp}
-              className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-center md:text-left"
-            >
-              <span className="block text-slate-100 italic">
-                {heroData.name.split(" ").slice(0, 2).join(" ")}
-              </span>
-<span className="block bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 bg-clip-text text-transparent text-center md:text-left">                {heroData.name.split(" ").slice(2).join(" ")}
-              </span>
-            </motion.h1>
+          {/* TYPING ROLE */}
+          <motion.p
+            variants={fadeUp}
+            className="text-lg md:text-xl lg:text-2xl font-bold text-center md:text-left text-slate-700"
+          >
+            {typedRole}
+            <span className="ml-2 inline-block animate-pulse border-r-[3px] border-[#4F46E5] h-6 w-0 translate-y-1"></span>
+          </motion.p>
+        </div>
 
-            {/* TYPING ROLE */}
-            <motion.p
-              variants={fadeUp}
-              className={`text-lg md:text-xl lg:text-2xl font-bold text-center md:text-left ${
-                isGradient
-                  ? "bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 bg-clip-text text-transparent"
-                  : "text-white"
-              }`}
-            >
-              {typedRole}
-              <span className="ml-2 inline-block animate-pulse text-cyan-300">|</span>
-            </motion.p>
-          </div>
+        <div className="space-y-4 text-slate-600 font-bold">
+          <p className="max-w-2xl text-lg leading-relaxed">
+            {heroData.tagline}
+          </p>
+          <p className="max-w-2xl text-base leading-7 text-slate-500">
+            I focus on clean UI, secure backend systems, and high-performance applications.
+          </p>
+        </div>
 
-          <div className="space-y-4 text-slate-300">
-            <p className="max-w-2xl text-lg leading-relaxed">
-              {heroData.tagline}
-            </p>
-            <p className="max-w-2xl text-base leading-7 text-slate-400">
-              I build user-focused experiences with scalable frontends and secure backend systems. My work is centered on responsiveness, performance, and reliable production delivery.
-            </p>
-          </div>
 
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-center md:justify-start">
-            {[
-              {
-                icon: <FaLinkedin />,
-                link: "https://www.linkedin.com/in/nampelly-sai-kumar/",
-                color: "hover:text-blue-400",
-              },
-              {
-                icon: <FaGithub />,
-                link: "https://github.com/SaikumarNampelly",
-                color: "hover:text-gray-300",
-              },
-              {
-                icon: <FaInstagram />,
-                link: "https://www.instagram.com/_chin2__41/?hl=en",
-                color: "hover:text-pink-400",
-              },
-              {
-                icon: <FaTwitter />,
-                link: "https://twitter.com/your-profile",
-                color: "hover:text-sky-400",
-              },
-            ].map((item, index) => (
-              <motion.a
-                key={index}
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -4, scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className={`flex items-center justify-center w-12 h-12 rounded-full bg-slate-900 border border-slate-700 text-xl text-slate-300 transition ${item.color} hover:border-slate-500`}
-              >
-                {item.icon}
-              </motion.a>
-            ))}
-          </motion.div>
-
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
-            <motion.button
-              whileHover={{ y: -3, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => {
-                document.getElementById("projects")?.scrollIntoView({
-                  behavior: "smooth",
-                });
-              }}
-              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition"
-            >
-              View Projects
-            </motion.button>
+        <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-center md:justify-start">
+          {[
+            {
+              icon: <FaLinkedin />,
+              link: "https://www.linkedin.com/in/nampelly-sai-kumar/",
+            },
+            {
+              icon: <FaGithub />,
+              link: "https://github.com/SaikumarNampelly",
+            },
+            {
+              icon: <FaInstagram />,
+              link: "https://www.instagram.com/_chin2__41/?hl=en",
+            },
+            {
+              icon: <FaTwitter />,
+              link: "https://twitter.com/your-profile",
+            },
+          ].map((item, index) => (
             <motion.a
-              href="/resume.pdf"
-              download
-              whileHover={{ y: -3, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-900/80 px-6 py-3 text-base font-semibold text-slate-200 transition hover:border-slate-500 hover:text-white"
+              key={index}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4, scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className={`flex items-center justify-center w-12 h-12 rounded-full bg-white border border-[#E5E7EB] text-xl text-slate-600 transition hover:text-[#4F46E5] hover:border-[#4F46E5] shadow-sm hover:shadow-md`}
             >
-              Download Resume
+              {item.icon}
             </motion.a>
-          </motion.div>
+          ))}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative flex w-full max-w-xl mx-auto h-[300px] md:mx-0 md:h-[600px] items-center justify-center overflow-hidden rounded-3xl border border-cyan-500/30 bg-gradient-to-br from-slate-900 via-slate-950 to-[#03070F] p-4 shadow-2xl shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-shadow duration-500"
-        >
-          <motion.img
-            src={profilePic}
-            alt="Profile"
-           className="w-full h-full object-cover object-[30%_1%] rounded-2xl"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#020B16]/95 to-transparent" />
-          <div className="pointer-events-none absolute -left-8 top-10 h-40 w-40 rounded-full bg-cyan-500/10 blur-3xl animate-pulse" />
-          <div className="pointer-events-none absolute right-8 bottom-8 h-28 w-28 rounded-full bg-blue-500/10 blur-2xl animate-pulse" />
+        <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
+          <motion.button
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => {
+              document.getElementById("projects")?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
+            className="inline-flex items-center justify-center rounded-full bg-[#4F46E5] px-8 py-4 text-base font-bold text-white shadow-lg shadow-indigo-200/50 transition hover:bg-[#4338CA]"
+
+          >
+            View My Work
+          </motion.button>
+
+          <motion.a
+            href="/resume.pdf"
+            download
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center justify-center rounded-full border border-[#E5E7EB] bg-white px-8 py-4 text-base font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-[#4F46E5] hover:border-[#4F46E5] shadow-sm"
+          >
+            Download Resume
+          </motion.a>
         </motion.div>
+      </motion.div>
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+  viewport={{ once: true }}
+  className="flex justify-center md:justify-start items-center"
+>
+  <div className="relative flex items-center justify-center">
+
+    {/* Animated Background Circle */}
+    <motion.div
+      animate={{ scale: [1, 1.05, 1] }}
+      transition={{
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    />
+
+    <motion.div
+      className="p-2 ml-22 relative"
+      animate={{ y: [0, -8, 0] }}
+      transition={{
+        duration: 4,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    >
+      <motion.img
+        src={profilePic}
+        alt="Profile"
+        className="w-[240px] h-[240px] md:w-[500px] md:h-[500px] rounded-full border-4 border-black bg-white object-cover object-[65%_15%]"
+        
+        whileHover={{ scale: 1.06 }}
+        transition={{ duration: 0.3 }}
+      />
+    </motion.div>
+
+  </div>
+</motion.div>
       </div>
     </section>
   );

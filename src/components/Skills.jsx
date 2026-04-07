@@ -9,7 +9,17 @@ import {
   FaCss3Alt,
   FaJsSquare,
   FaServer,
+  FaHtml5,
 } from "react-icons/fa";
+
+import {
+  SiTailwindcss,
+  SiMongodb,
+  SiMysql,
+  SiExpress,
+  SiVercel,
+  SiGithub,
+} from "react-icons/si";
 
 import skillsData from "../Data/skills";
 import Container from "./ui/Container";
@@ -48,32 +58,34 @@ const skillVariants = {
 const categoryTitles = {
   frontend: "Frontend Development",
   backend: "Backend Development",
-  languages: "Programming Languages",
+  languages: "Languages",
   database: "Databases",
   tools: "Tools & Platforms",
 };
 
-// ✅ ICONS (important fix)
 const skillIcons = {
-  "HTML5": <FaCode className="text-orange-400" />,
-  "CSS3": <FaCss3Alt className="text-blue-400" />,
-  "React.js": <FaReact className="text-cyan-400" />,
-  "Tailwind CSS": <FaCss3Alt className="text-cyan-400" />,
-  "Node.js": <FaNodeJs className="text-green-400" />,
-  "Express.js": <FaServer className="text-gray-400" />,
+  "HTML5": <FaHtml5 className="text-orange-500" />,
+  "CSS3": <FaCss3Alt className="text-blue-500" />,
+  "React.js": <FaReact className="text-cyan-500" />,
+  "Tailwind CSS": <SiTailwindcss className="text-sky-400" />,
+  "Node.js": <FaNodeJs className="text-green-500" />,
+  "Express.js": <SiExpress className="text-gray-600" />,
   "JavaScript (ES6+)": <FaJsSquare className="text-yellow-400" />,
-  Java: <FaCode className="text-red-400" />,
-  MongoDB: <FaDatabase className="text-green-500" />,
-  MySQL: <FaDatabase className="text-blue-500" />,
-  Git: <FaGitAlt className="text-orange-400" />,
-  GitHub: <FaGitAlt className="text-gray-300" />,
-  "VS Code": <FaCode className="text-blue-300" />,
-  Vercel: <FaTools className="text-white" />,
+  "Java": <FaCode className="text-red-500" />,
+  "MongoDB": <SiMongodb className="text-green-600" />,
+  "MySQL": <SiMysql className="text-blue-600" />,
+  "Git": <FaGitAlt className="text-orange-600" />,
+  "GitHub": <SiGithub className="text-black" />,
+  "VS Code": <FaCode className="text-indigo-500" />,
+  "Vercel": <SiVercel className="text-black" />,
 };
+
+
 
 const Skills = () => {
   return (
-    <section id="skills" className="px-4 py-12 md:px-6 md:py-20 bg-slate-950 text-slate-100">
+    <section id="skills" className="px-4 py-24 bg-[#F1F5F9]">
+
       <Container>
         <motion.div
           variants={containerVariants}
@@ -88,46 +100,45 @@ const Skills = () => {
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-  {Object.entries(skillsData).map(([category, skills], i) => (
-    <motion.div
-      key={i}
-      variants={textVariants}
-      className="space-y-5 p-5 sm:p-6 rounded-2xl border border-white/10 
-      bg-white/5 backdrop-blur-xl 
-      shadow-lg shadow-black/20 
-      hover:shadow-cyan-500/10 
-      transition-all duration-300"
-    >
-      {/* HEADING */}
-      <h3 className="text-lg font-semibold text-cyan-300">
-        {categoryTitles?.[category] || category}
-      </h3>
+            {Object.entries(skillsData).map(([category, skills], i) => (
+              <motion.div
+                key={i}
+                variants={textVariants}
+                className="flex flex-col gap-6 p-6 rounded-3xl border border-[#E5E7EB] bg-white shadow-sm hover:shadow-md
+      hover:shadow-md transition-all duration-300"
+              >
+                {/* HEADING */}
+                <h3 className={`text-lg font-bold mb-4 text-[#4F46E5]`}>
+                  {categoryTitles?.[category] || category}
+                </h3>
 
-      {/* SKILLS INSIDE BOX */}
-      <div className="flex flex-wrap gap-3">
-        {skills.map((skill, index) => {
-          const icon =
-            skillIcons[skill] || (
-              <FaCode className="text-slate-400" />
-            );
 
-          return (
-            <motion.div
-              key={index}
-              whileHover={{ y: -3 }}
-              className="flex items-center gap-2 px-3 py-2 rounded-full 
-              border border-white/10 bg-white/5 backdrop-blur-md 
-              text-sm text-slate-200 hover:border-cyan-400/40 transition"
-            >
-              <span className="text-lg">{icon}</span>
-              <span>{skill}</span>
-            </motion.div>
-          );
-        })}
-      </div>
-    </motion.div>
-  ))}
-</div>
+
+
+
+                {/* SKILLS INSIDE BOX */}
+                <div className="flex flex-wrap gap-3">
+                  {skills.map((skill, index) => {
+                    const icon =
+                      skillIcons[skill] || (
+                        <FaCode className="text-slate-400" />
+                      );
+
+                    return (
+                      <motion.div
+                        key={index}
+                        whileHover={{ y: -3, borderColor: "#4F46E5" }}
+                       className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] text-[#374151] text-sm font-medium transition-all duration-300 hover:border-[#4F46E5]"
+                      >
+                        <span className="text-base">{icon}</span>
+                        <span>{skill}</span>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </Container>
     </section>

@@ -4,24 +4,24 @@ import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa";
 const Footer = () => {
   return (
     <motion.footer
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
       viewport={{ once: true }}
-      className="py-10 bg-slate-950 border-t border-slate-800"
-    >
-      <div className="max-w-6xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+      className="bg-[#F1F5F9] border-t border-[#E5E7EB] py-12"
+    > 
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
         
-        <div className="flex flex-col items-center md:items-start gap-3">
-          <h2 className="text-2xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Sai Kumar Nampelly
+        <div className="flex flex-col items-center md:items-start gap-4">
+          <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+            Sai Kumar <span className="text-[#4F46E5]">Nampelly</span>
           </h2>
-          <p className="text-slate-400 text-sm max-w-xs">
-            Building digital experiences with precision and passion.
+          <p className="text-slate-500 font-medium text-sm max-w-xs text-center md:text-left">
+            Crafting high-performance web applications with modern tech stacks.
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center md:items-end gap-6">
           <div className="flex gap-4">
             {[
               { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/nampelly-sai-kumar/", label: "LinkedIn" },
@@ -34,18 +34,18 @@ const Footer = () => {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ y: -5, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-400/40 transition-all shadow-lg"
+                whileHover={{ y: -4, scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center w-11 h-11 rounded-full bg-white border border-[#E5E7EB] text-lg text-slate-600 transition-all hover:text-[#4F46E5] hover:border-[#4F46E5] shadow-sm hover:shadow-md"
                 title={item.label}
               >
                 {item.icon}
               </motion.a>
             ))}
           </div>
-          
-          <p className="text-slate-500 text-xs tracking-wider">
-            © {new Date().getFullYear()} <span className="text-cyan-500/80 font-medium">Sai Kumar Nampelly</span>.
+
+          <p className="text-slate-400 text-xs font-medium">
+            © {new Date().getFullYear()} <span className="text-slate-600">Sai Kumar Nampelly</span>. All rights reserved.
           </p>
         </div>
       </div>

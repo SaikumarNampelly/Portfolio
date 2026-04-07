@@ -13,7 +13,10 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: #020617; /* match your dark theme */
+  background-color: #ffffff; /* More defined light background */
+  color: #0e1116; /* Slate 800 - High Contrast Text */
+
+
   min-height: 100vh;
   overflow-x: hidden;
 }

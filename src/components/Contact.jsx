@@ -64,7 +64,8 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="px-4 py-12 md:px-6 md:py-20 bg-slate-950 text-slate-100">
+    <section id="contact" className="px-4 py-24 bg-white">
+
       <Container>
         <motion.div
           variants={containerVariants}
@@ -76,38 +77,38 @@ const Contact = () => {
           {/* TITLE */}
           <motion.div variants={textVariants} className="text-center max-w-3xl mx-auto">
             <SectionTitle title="Contact Me" />
-            <p className="text-slate-400">
-              Let’s build something amazing together. Reach out for projects or collaborations.
-            </p>
+            <p className="text-slate-600">
+              Let’s build something impactful together. Feel free to reach out for projects or collaborations.            </p>
+
           </motion.div>
 
           <div className="grid gap-6 md:gap-8 lg:grid-cols-[1.4fr_1fr]">
 
             <motion.div
               variants={textVariants}
-              className="rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8 shadow-xl"
+              className="rounded-2xl border border-[#E5E7EB] bg-white shadow-sm p-6 sm:p-10"
             >
-              <h3 className="text-xl font-semibold text-cyan-300 mb-4">
-                Contact Me
+              <h3 className="text-xl font-semibold text-[#4F46E5] mb-4">
+                Get In Touch
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your name"
+                  placeholder="Full Name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 focus:border-cyan-400 focus:outline-none"
+                  className="w-full rounded-xl border border-[#E5E7EB] bg-[#F1F5F9] px-4 py-3.5 text-slate-900 placeholder:text-slate-400 focus:border-[#4F46E5] focus:bg-white focus:outline-none transition-all"
                 />
 
                 <input
                   type="email"
                   name="email"
-                  placeholder="you@example.com"
+                  placeholder="Email Address"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 focus:border-cyan-400 focus:outline-none"
+                  className="w-full rounded-xl border border-[#E5E7EB] bg-[#F1F5F9] px-4 py-3.5 text-slate-900 placeholder:text-slate-400 focus:border-[#4F46E5] focus:bg-white focus:outline-none transition-all"
                 />
 
                 <input
@@ -116,57 +117,68 @@ const Contact = () => {
                   placeholder="Subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 focus:border-cyan-400 focus:outline-none"
+                  className="w-full rounded-xl border border-[#E5E7EB] bg-[#F1F5F9] px-4 py-3.5 text-slate-900 placeholder:text-slate-400 focus:border-[#4F46E5] focus:bg-white focus:outline-none transition-all"
                 />
 
                 <textarea
                   name="message"
                   rows={5}
-                  placeholder="Your message..."
+                  placeholder="How can I help you?"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 focus:border-cyan-400 focus:outline-none"
+                  className="w-full rounded-xl border border-[#E5E7EB] bg-[#F1F5F9] px-4 py-3.5 text-slate-900 placeholder:text-slate-400 focus:border-[#4F46E5] focus:bg-white focus:outline-none transition-all resize-none"
                 />
 
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 font-semibold text-slate-950 transition hover:scale-105"
+                  className="w-full rounded-xl bg-[#4F46E5] px-6 py-4 font-bold text-white transition hover:bg-[#4338CA] shadow-lg shadow-indigo-100"
                 >
                   Send Message
                 </button>
                 {status && (
-                  <p className="mt-3 text-sm text-cyan-200">{status}</p>
+                  <p className="mt-3 text-sm text-[#4F46E5] font-medium">{status}</p>
                 )}
               </form>
             </motion.div>
 
-            {/* CONTACT INFO */}
             <motion.div
               variants={textVariants}
-              className="rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8 shadow-xl space-y-6"
+              className="rounded-2xl border border-[#E5E7EB] bg-white p-6 sm:p-10 shadow-sm space-y-10"
             >
-              <h3 className="text-xl font-semibold text-cyan-300">
+              <h3 className="text-xl font-semibold text-[#4F46E5]">
                 Contact Info
               </h3>
 
-              <div className="space-y-4">
-                <p className="text-slate-300">
-                  📧 {contactData.email}
-                </p>
-                <p className="text-slate-300">
-                  📱 {contactData.phone}
-                </p>
-                <p className="text-slate-300">
-                  📍 {contactData.location}
-                </p>
+              <div className="space-y-6">
+                <div className="flex items-center gap-5 p-5 rounded-2xl bg-[#F1F5F9] border border-[#E5E7EB] transition-colors hover:border-[#4F46E5]/30">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-[#E5E7EB] flex items-center justify-center text-[#4F46E5] shadow-sm">📧</div>
+                  <div>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Email</p>
+                    <p className="text-slate-700 font-bold text-sm tracking-tight">{contactData.email}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-5 p-5 rounded-2xl bg-[#F1F5F9] border border-[#E5E7EB] transition-colors hover:border-[#4F46E5]/30">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-[#E5E7EB] flex items-center justify-center text-[#4F46E5] shadow-sm">📱</div>
+                  <div>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Phone</p>
+                    <p className="text-slate-700 font-bold text-sm tracking-tight">{contactData.phone}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-5 p-5 rounded-2xl bg-[#F1F5F9] border border-[#E5E7EB] transition-colors hover:border-[#4F46E5]/30">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-[#E5E7EB] flex items-center justify-center text-[#4F46E5] shadow-sm">📍</div>
+                  <div>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Location</p>
+                    <p className="text-slate-700 font-bold text-sm tracking-tight">{contactData.location}</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3 pt-4">
                 <a
                   href={contactData.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 hover:text-cyan-400"
+                  className="px-6 py-3 rounded-xl bg-white border border-[#E5E7EB] text-slate-700 hover:text-[#4F46E5] hover:border-[#4F46E5] hover:shadow-sm transition-all font-bold text-sm flex-1 text-center"
                 >
                   GitHub
                 </a>
@@ -174,11 +186,12 @@ const Contact = () => {
                   href={contactData.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 hover:text-cyan-400"
+                  className="px-6 py-3 rounded-xl bg-white border border-[#E5E7EB] text-slate-700 hover:text-[#4F46E5] hover:border-[#4F46E5] hover:shadow-sm transition-all font-bold text-sm flex-1 text-center"
                 >
                   LinkedIn
                 </a>
               </div>
+
             </motion.div>
 
           </div>
