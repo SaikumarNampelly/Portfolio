@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import contactData from "../Data/contact";
 import Container from "./ui/Container";
 import SectionTitle from "./ui/SectionTitle";
@@ -64,7 +66,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="px-4 py-24 bg-white">
+    <section id="contact" className="px-4 py-24 bg-white sm:px-6">
 
       <Container>
         <motion.div
@@ -149,23 +151,29 @@ const Contact = () => {
                 Contact Info
               </h3>
 
-              <div className="space-y-6">
-                <div className="flex items-center gap-5 p-5 rounded-2xl bg-[#F1F5F9] border border-[#E5E7EB] transition-colors hover:border-[#4F46E5]/30">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-[#E5E7EB] flex items-center justify-center text-[#4F46E5] shadow-sm">📧</div>
+              <div className="space-y-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-5 rounded-2xl bg-[#F1F5F9] border border-[#E5E7EB] transition-colors hover:border-[#4F46E5]/30">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-[#E5E7EB] flex items-center justify-center text-[#4F46E5] shadow-sm">
+                    <FiMail className="w-5 h-5" aria-hidden="true" />
+                  </div>
                   <div>
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Email</p>
                     <p className="text-slate-700 font-bold text-sm tracking-tight">{contactData.email}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-5 p-5 rounded-2xl bg-[#F1F5F9] border border-[#E5E7EB] transition-colors hover:border-[#4F46E5]/30">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-[#E5E7EB] flex items-center justify-center text-[#4F46E5] shadow-sm">📱</div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-5 rounded-2xl bg-[#F1F5F9] border border-[#E5E7EB] transition-colors hover:border-[#4F46E5]/30">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-[#E5E7EB] flex items-center justify-center text-[#4F46E5] shadow-sm">
+                    <FiPhone className="w-5 h-5" aria-hidden="true" />
+                  </div>
                   <div>
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Phone</p>
                     <p className="text-slate-700 font-bold text-sm tracking-tight">{contactData.phone}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-5 p-5 rounded-2xl bg-[#F1F5F9] border border-[#E5E7EB] transition-colors hover:border-[#4F46E5]/30">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-[#E5E7EB] flex items-center justify-center text-[#4F46E5] shadow-sm">📍</div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-5 rounded-2xl bg-[#F1F5F9] border border-[#E5E7EB] transition-colors hover:border-[#4F46E5]/30">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-[#E5E7EB] flex items-center justify-center text-[#4F46E5] shadow-sm">
+                    <FiMapPin className="w-5 h-5" aria-hidden="true" />
+                  </div>
                   <div>
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Location</p>
                     <p className="text-slate-700 font-bold text-sm tracking-tight">{contactData.location}</p>
@@ -173,21 +181,23 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-3 pt-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-4">
                 <a
                   href={contactData.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-6 py-3 rounded-xl bg-white border border-[#E5E7EB] text-slate-700 hover:text-[#4F46E5] hover:border-[#4F46E5] hover:shadow-sm transition-all font-bold text-sm flex-1 text-center"
+                  className="w-full sm:flex-1 px-6 py-3 rounded-xl bg-white border border-[#E5E7EB] text-slate-700 hover:text-[#4F46E5] hover:border-[#4F46E5] hover:shadow-sm transition-all font-bold text-sm text-center flex items-center justify-center gap-2"
                 >
+                  <FaGithub className="w-4 h-4" aria-hidden="true" />
                   GitHub
                 </a>
                 <a
                   href={contactData.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-6 py-3 rounded-xl bg-white border border-[#E5E7EB] text-slate-700 hover:text-[#4F46E5] hover:border-[#4F46E5] hover:shadow-sm transition-all font-bold text-sm flex-1 text-center"
+                  className="w-full sm:flex-1 px-6 py-3 rounded-xl bg-white border border-[#E5E7EB] text-slate-700 hover:text-[#4F46E5] hover:border-[#4F46E5] hover:shadow-sm transition-all font-bold text-sm text-center flex items-center justify-center gap-2"
                 >
+                  <FaLinkedin className="w-4 h-4" aria-hidden="true" />
                   LinkedIn
                 </a>
               </div>
